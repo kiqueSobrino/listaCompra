@@ -15,4 +15,12 @@
   </p>
 
   <button ion-button secondary menuToggle>Toggle Menu</button>
+
+  <form>
+    <label>Nueva lista de compra:
+      <input #listName />
+    </label>
+    <button ion-button (click)="addItem(listName.value); listName.value='';">Añadir lista de compra</button>
+  </form>  
+  
 </ion-content>
