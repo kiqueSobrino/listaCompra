@@ -4,13 +4,19 @@ import { NavController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation';
 
+import { ShoppingList } from '../../app/shopping-list';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
 
-  pages: Array<{ title: string, component: string }>;
+  //pages: Array<{ title: string, component: string }>;
+  shoppingLists: ShoppingList;
+
+  key: string = 'Lists';
+  name: string = 'Lista sin nombre';
 
   constructor(public navCtrl: NavController, private storage: Storage, private geolocation: Geolocation) {
     // storage.ready().then(() => {
@@ -36,15 +42,25 @@ export class HomePage {
     storage.get('age').then((val) => {
       console.log('Your age is', val);
     });
-    
+
+    storage.get(this.key).then((val) => {
+      console.log('El producto de las listas es', val);
+    });
+
   }
 
-  addItem() {
-    alert('TODO: addItem()');
-    //this.pages.push({ title: this.name, component: ListPage })
-  }
+  addList(newList) {
+    //this.storage.set(this.key, { name: newList });
+    this.storage.set(this.key, newList);
+    this.storage.get(this.key).then((val) => {
+      console.log('El producto de las listas es', val);
+    });
 
+    // this.myApp.pages.push({ title: 'ASD', component: ListPage });
+  }
   
-  
+
+
+
 
 }
