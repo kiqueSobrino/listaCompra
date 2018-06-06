@@ -8,6 +8,8 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'list.html'
 })
 export class ListPage {
+  title = 'Mi lista:';
+  
   selectedItem: any;
   icons: string[];
   items: Array<{name: string, price: string}>;
